@@ -1,0 +1,21 @@
+# Пример конфигурации (без секретов!)
+app:
+  name: helpdesk
+  version: 1.2.0
+  env: production
+
+database:
+  host: db.internal
+  port: 5432
+  name: helpdesk
+  user: helpdesk_app
+  # password задаётся через переменную окружения DB_PASSWORD
+
+notifications:
+  smtp_host: smtp.example.edu
+  smtp_port: 587
+  telegram_bot_token: ${TELEGRAM_BOT_TOKEN}  # через env, не в Git!
+
+monitoring:
+  metrics_port: 9090
+  log_level: INFO

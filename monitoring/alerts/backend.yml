@@ -1,0 +1,15 @@
+groups:
+- name: helpdesk-backend
+  rules:
+  - alert: BackendDown
+    expr: up{job="helpdesk-backend"} == 0
+    for: 2m
+    severity: critical
+  - alert: HighErrorRate
+    expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+    for: 5m
+    severity: warning
+  - alert: NotificationsQueueGrowing
+    expr: notifications_queue_size > 50
+    for: 10m
+    severity: warning
